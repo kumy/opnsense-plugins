@@ -1,0 +1,25 @@
+<form>
+    <field>
+        <id>minio.enabled</id>
+        <label>Enable Minio</label>
+        <type>checkbox</type>
+    </field>
+    <field>
+        <id>minio.url</id>
+        <label>URL</label>
+        <type>text</type>
+        <help><![CDATA[Minio repository URL. ex: s3:http://localhost:9000/restic]]></help>
+    </field>
+    <field>
+        <id>minio.aws_access_key_id</id>
+        <label>AWS_ACCESS_KEY_ID</label>
+        <type>text</type>
+        <help>YOUR-MINIO-ACCESS-KEY-ID</help>
+    </field>
+    <field>
+        <id>minio.aws_secret_access_key</id>
+        <label>AWS_SECRET_ACCESS_KEY</label>
+        <type>password</type>
+        <help>YOUR-MINIO-SECRET-ACCESS-KEY</help>
+    </field>
+ </form>

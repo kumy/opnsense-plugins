@@ -1,0 +1,11 @@
+# files_to_backup
+# !!! DO NOT EDIT MANUALLY !!
+{% if not helpers.empty('system.backup.restic.general.paths.config') %}
+/conf/config.xml
+{% endif %}
+{% if not helpers.empty('system.backup.restic.general.paths.rrd') %}
+/conf/rrd.tgz
+{% endif %}
+{% if not helpers.empty('system.backup.restic.general.paths.dhcpleases') %}
+/conf/dhcpleases.tgz
+{% endif %}

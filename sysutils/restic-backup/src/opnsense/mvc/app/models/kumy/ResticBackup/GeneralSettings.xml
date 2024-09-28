@@ -1,0 +1,77 @@
+<model>
+    <mount>//system/backup/restic/general</mount>
+    <description>OPNsense Restic Backup General Settings</description>
+    <version>0.0.0</version>
+    <items>
+        <enabled type="BooleanField">
+            <default>1</default>
+            <Required>Y</Required>
+        </enabled>
+        <cronjob type="BooleanField">
+            <default>1</default>
+            <Required>Y</Required>
+        </cronjob>
+        <onchange type="BooleanField">
+            <default>0</default>
+            <Required>Y</Required>
+        </onchange>
+        <UpdateCron type="ModelRelationField">
+            <Model>
+                <queues>
+                    <source>OPNsense.Cron.Cron</source>
+                    <items>jobs.job</items>
+                    <display>description</display>
+                    <filters>
+                        <origin>/ResticBackup/</origin>
+                    </filters>
+                </queues>
+            </Model>
+            <ValidationMessage>Related cron not found.</ValidationMessage>
+            <Required>N</Required>
+        </UpdateCron>
+        <paths>
+            <config type="BooleanField">
+                <default>1</default>
+                <Required>N</Required>
+            </config>
+            <rrd type="BooleanField">
+                <default>0</default>
+                <Required>N</Required>
+            </rrd>
+            <dhcpleases type="BooleanField">
+                <default>0</default>
+                <Required>N</Required>
+            </dhcpleases>
+        </paths>
+        <repositorypassword type="TextField">
+            <Required>Y</Required>
+        </repositorypassword>
+        <expunge>
+            <forget type="BooleanField">
+                <default>0</default>
+                <Required>N</Required>
+            </forget>
+            <prune type="BooleanField">
+                <default>0</default>
+                <Required>N</Required>
+            </prune>
+            <options type="TextField">
+                <Required>N</Required>
+            </options>
+        </expunge>
+        <advanced>
+            <no_cache type="BooleanField">
+                <default>1</default>
+                <Required>Y</Required>
+            </no_cache>
+            <insecure_tls type="BooleanField">
+                <default>0</default>
+                <Required>Y</Required>
+            </insecure_tls>
+            <cleanup_cache type="BooleanField">
+                <default>0</default>
+                <Required>Y</Required>
+            </cleanup_cache>
+        </advanced>
+    </items>
+</model>

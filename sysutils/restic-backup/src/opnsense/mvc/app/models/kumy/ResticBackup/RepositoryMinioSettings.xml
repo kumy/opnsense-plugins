@@ -1,0 +1,60 @@
+<model>
+    <mount>//system/backup/restic/repositories/minio</mount>
+    <description>OPNsense Restic Backup Settings</description>
+    <version>0.0.0</version>
+    <items>
+        <enabled type="BooleanField">
+            <default>0</default>
+            <Required>Y</Required>
+            <Constraints>
+                <check001>
+                    <reference>url.check001</reference>
+                </check001>
+                <check002>
+                    <reference>aws_access_key_id.check001</reference>
+                </check002>
+                <check003>
+                    <reference>aws_secret_access_key.check001</reference>
+                </check003>
+            </Constraints>
+        </enabled>
+        <url type="TextField">
+            <Required>N</Required>
+            <Constraints>
+                <check001>
+                    <ValidationMessage>An URL is required.</ValidationMessage>
+                    <type>DependConstraint</type>
+                    <addFields>
+                        <field1>enabled</field1>
+                    </addFields>
+                </check001>
+            </Constraints>
+        </url>
+        <aws_access_key_id type="TextField">
+            <Required>N</Required>
+            <Constraints>
+                <check001>
+                    <ValidationMessage>An AWS_ACCESS_KEY_ID is required.</ValidationMessage>
+                    <type>DependConstraint</type>
+                    <addFields>
+                        <field1>enabled</field1>
+                    </addFields>
+                </check001>
+            </Constraints>
+        </aws_access_key_id>
+        <!-- Should be UpdateOnlyTextField but we hit bug https://github.com/opnsense/core/issues/7878 -->
+        <!-- <aws_secret_access_key type="UpdateOnlyTextField"> -->
+        <aws_secret_access_key type="TextField">
+            <Required>N</Required>
+            <Constraints>
+                <check001>
+                    <ValidationMessage>An AWS_SECRET_ACCESS_KEY is required.</ValidationMessage>
+                    <type>DependConstraint</type>
+                    <addFields>
+                        <field1>enabled</field1>
+                    </addFields>
+                </check001>
+            </Constraints>
+        </aws_secret_access_key>
+    </items>
+</model>

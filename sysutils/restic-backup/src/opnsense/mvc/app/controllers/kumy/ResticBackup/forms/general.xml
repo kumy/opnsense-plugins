@@ -1,0 +1,94 @@
+<form>
+    <field>
+        <id>restic.enabled</id>
+        <label>Enabled</label>
+        <type>checkbox</type>
+    </field>
+    <field>
+        <id>restic.cronjob</id>
+        <label>Enable schedule</label>
+        <type>checkbox</type>
+        <help>Enable automatic backup. This will add a cron job to the system.</help>
+    </field>
+    <field>
+        <id>restic.onchange</id>
+        <label>Enable on config change</label>
+        <type>checkbox</type>
+        <help>Enable automatic backup after each configuration change.</help>
+    </field>
+    <field>
+        <id>restic.repositorypassword</id>
+        <label>Repository password</label>
+        <type>password</type>
+        <help>Password used for backup encryption</help>
+    </field>
+    <field>
+        <id>restic.paths.header</id>
+        <label>Files selection</label>
+        <type>header</type>
+        <collapse>false</collapse>
+    </field>
+    <field>
+        <id>restic.paths.config</id>
+        <label>Backup config.xml</label>
+        <type>checkbox</type>
+        <help>Backup the /config/config.xml file.</help>
+    </field>
+    <field>
+        <id>restic.paths.rrd</id>
+        <label>Backup rrd</label>
+        <type>checkbox</type>
+        <help>Backup the /conf/rrd.tgz file.</help>
+    </field>
+    <field>
+        <id>restic.paths.dhcpleases</id>
+        <label>Backup DHCP leases</label>
+        <type>checkbox</type>
+        <help>Backup the /config/dhcpleases.tgz file.</help>
+    </field>
+    <field>
+        <id>restic.expunge.header</id>
+        <label>Expunge</label>
+        <type>header</type>
+        <collapse>false</collapse>
+    </field>
+    <field>
+        <id>restic.expunge.forget</id>
+        <label>Enable forget</label>
+        <type>checkbox</type>
+        <help>Remove snapshots from the repository</help>
+    </field>
+    <field>
+        <id>restic.expunge.prune</id>
+        <label>Enable prune</label>
+        <type>checkbox</type>
+        <help>Remove unneeded data from the repository. Note: Prune is required to really remove data from repository after a "forget".)</help>
+    </field>
+    <field>
+        <id>restic.expunge.options</id>
+        <label>Restic forget flags</label>
+        <type>text</type>
+        <help><![CDATA[See <a href="https://restic.readthedocs.io/en/stable/060_forget.html#removing-snapshots-according-to-a-policy" target="_blank">Removing snapshots according to a policy</a> for details.]]></help>
+    </field>
+    <field>
+        <id>restic.advanced.header</id>
+        <label>Global options</label>
+        <type>header</type>
+        <collapse>false</collapse>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>restic.advanced.insecure_tls</id>
+        <label>insecure tls</label>
+        <type>checkbox</type>
+        <help>Skip TLS certificate verification when connecting to the repository (insecure)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>restic.advanced.no_cache</id>
+        <label>no cache</label>
+        <type>checkbox</type>
+        <help>Do not use a local cache</help>
+        <advanced>true</advanced>
+    </field>
+ </form>

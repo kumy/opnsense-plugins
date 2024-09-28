@@ -1,0 +1,4 @@
+files_to_backup:/usr/local/etc/resticbackup/files_to_backup
+general.conf:/usr/local/etc/resticbackup/general.conf
+repositories/local.conf:/usr/local/etc/resticbackup/repositories/local.conf
+repositories/minio.conf:/usr/local/etc/resticbackup/repositories/minio.conf

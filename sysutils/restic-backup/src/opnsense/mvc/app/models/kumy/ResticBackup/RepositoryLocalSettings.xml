@@ -1,0 +1,28 @@
+<model>
+    <mount>//system/backup/restic/repositories/local</mount>
+    <description>OPNsense Restic Backup Settings</description>
+    <version>0.0.0</version>
+    <items>
+        <enabled type="BooleanField">
+            <default>0</default>
+            <Required>Y</Required>
+            <Constraints>
+                <check001>
+                    <reference>path.check001</reference>
+                </check001>
+            </Constraints>
+        </enabled>
+        <path type="TextField">
+            <Required>N</Required>
+            <Constraints>
+                <check001>
+                    <ValidationMessage>A path is required.</ValidationMessage>
+                    <type>DependConstraint</type>
+                    <addFields>
+                        <field1>enabled</field1>
+                    </addFields>
+                </check001>
+            </Constraints>
+        </path>
+    </items>
+</model>

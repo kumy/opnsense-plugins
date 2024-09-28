@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Load global config
+CONFIG_DIR=/usr/local/etc/resticbackup
+. ${CONFIG_DIR}/general.conf
+
+# Skip backup if option is not enabled
+${RESTIC_ENABLE_ON_CHANGE} || exit 0
+
+configctl restic backup-stdin -- "${@}"

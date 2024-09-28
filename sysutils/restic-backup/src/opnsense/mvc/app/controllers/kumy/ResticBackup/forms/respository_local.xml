@@ -1,0 +1,13 @@
+<form>
+    <field>
+        <id>local.enabled</id>
+        <label>Enable Local Backups</label>
+        <type>checkbox</type>
+    </field>
+    <field>
+        <id>local.path</id>
+        <label>Path</label>
+        <type>text</type>
+        <help>Local path on the system></help>
+    </field>
+ </form>

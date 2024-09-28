@@ -1,0 +1,7 @@
+<menu>
+    <System>
+        <ResticBackup VisibleName="Restic Backup" cssClass="fa fa-history fa-fw">
+            <Configuration url="/ui/resticbackup"/>
+        </ResticBackup>
+    </System>
+</menu>
