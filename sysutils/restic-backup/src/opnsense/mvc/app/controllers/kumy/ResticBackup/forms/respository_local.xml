@@ -10,4 +10,67 @@
         <type>text</type>
         <help>Local path on the system></help>
     </field>
+    <field>
+        <id>local.advanced.header</id>
+        <label>Global options overrides</label>
+        <type>header</type>
+        <collapse>false</collapse>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>local.repositorypassword</id>
+        <label>Repository password</label>
+        <type>password</type>
+        <help>Password used for backup encryption</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>local.advanced.no_cache</id>
+        <label>no cache</label>
+        <type>dropdown</type>
+        <help>Do not use a local cache</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>local.advanced.cache_dir</id>
+        <label>cache dir</label>
+        <type>text</type>
+        <help>Set the cache directory. (default: use system default cache directory)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>local.advanced.cleanup_cache</id>
+        <label>cleanup cache</label>
+        <type>dropdown</type>
+        <help>Auto remove old cache directories</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>local.advanced.compression</id>
+        <label>compression</label>
+        <type>dropdown</type>
+        <help>Compression mode (default auto)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>local.advanced.retry_lock</id>
+        <label>retry lock</label>
+        <type>text</type>
+        <help>Retry to lock the repository if it is already locked, takes a value like 5m or 2h (default: no retries)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>local.advanced.no_extra_verify</id>
+        <label>no extra verify</label>
+        <type>dropdown</type>
+        <help>Skip additional verification of data before upload</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>local.advanced.stuck_request_timeout</id>
+        <label>stuck request timeout</label>
+        <type>text</type>
+        <help>Duration after which to retry stuck requests (default 5m0s)</help>
+        <advanced>true</advanced>
+    </field>
  </form>

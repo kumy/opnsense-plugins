@@ -42,8 +42,6 @@
                 </check001>
             </Constraints>
         </aws_access_key_id>
-        <!-- Should be UpdateOnlyTextField but we hit bug https://github.com/opnsense/core/issues/7878 -->
-        <!-- <aws_secret_access_key type="UpdateOnlyTextField"> -->
         <aws_secret_access_key type="TextField">
             <Required>N</Required>
             <Constraints>
@@ -56,5 +54,65 @@
                 </check001>
             </Constraints>
         </aws_secret_access_key>
+        <repositorypassword type=".\TextOrGlobalDefaultField">
+            <Required>Y</Required>
+        </repositorypassword>
+        <advanced>
+            <no_cache type="OptionField">
+                <default>global default</default>
+                <required>Y</required>
+                <OptionValues>
+                    <enabled value="1">on</enabled>
+                    <disabled value="0">off</disabled>
+                    <global_default value="global default">global default</global_default>
+                </OptionValues>
+            </no_cache>
+            <cache_dir type=".\TextOrGlobalDefaultField" />
+            <insecure_tls type="OptionField">
+                <default>global default</default>
+                <required>Y</required>
+                <OptionValues>
+                    <enabled value="1">on</enabled>
+                    <disabled value="0">off</disabled>
+                    <global_default value="global default">global default</global_default>
+                </OptionValues>
+            </insecure_tls>
+            <cleanup_cache type="OptionField">
+                <default>global default</default>
+                <required>Y</required>
+                <OptionValues>
+                    <enabled value="1">on</enabled>
+                    <disabled value="0">off</disabled>
+                    <global_default value="global default">global default</global_default>
+                </OptionValues>
+            </cleanup_cache>
+            <compression type="OptionField">
+                <default>global default</default>
+                <required>Y</required>
+                <OptionValues>
+                    <off>off</off>
+                    <max>max</max>
+                    <global_default value="global default">global default</global_default>
+                </OptionValues>
+            </compression>
+            <http_user_agent type=".\TextOrGlobalDefaultField" />
+            <retry_lock type=".\TextOrGlobalDefaultField" />
+            <no_extra_verify type="OptionField">
+                <default>global default</default>
+                <required>Y</required>
+                <OptionValues>
+                    <enabled value="1">on</enabled>
+                    <disabled value="0">off</disabled>
+                    <global_default value="global default">global default</global_default>
+                </OptionValues>
+            </no_extra_verify>
+            <limit_download type=".\IntegerFieldOrGlobalDefaultField">
+                <default>global default</default>
+            </limit_download>
+            <limit_upload type=".\IntegerFieldOrGlobalDefaultField">
+                <default>global default</default>
+            </limit_upload>
+            <stuck_request_timeout type=".\TextOrGlobalDefaultField" />
+        </advanced>
     </items>
 </model>

@@ -91,4 +91,67 @@
         <help>Do not use a local cache</help>
         <advanced>true</advanced>
     </field>
+    <field>
+        <id>restic.advanced.cache_dir</id>
+        <label>cache dir</label>
+        <type>text</type>
+        <help>Set the cache directory. (default: use system default cache directory)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>restic.advanced.cleanup_cache</id>
+        <label>cleanup cache</label>
+        <type>checkbox</type>
+        <help>Auto remove old cache directories</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>restic.advanced.compression</id>
+        <label>compression</label>
+        <type>dropdown</type>
+        <help>Compression mode (default auto)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>restic.advanced.http_user_agent</id>
+        <label>http user agent</label>
+        <type>text</type>
+        <help>Set a http user agent for outgoing http requests</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>restic.advanced.retry_lock</id>
+        <label>retry lock</label>
+        <type>text</type>
+        <help>Retry to lock the repository if it is already locked, takes a value like 5m or 2h (default: no retries)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>restic.advanced.no_extra_verify</id>
+        <label>no extra verify</label>
+        <type>checkbox</type>
+        <help>Skip additional verification of data before upload</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>restic.advanced.limit_download</id>
+        <label>limit download</label>
+        <type>text</type>
+        <help>Limits download to a maximum rate in KiB/s. (default: unlimited)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>restic.advanced.limit_upload</id>
+        <label>limit upload</label>
+        <type>text</type>
+        <help>Limits uploads to a maximum rate in KiB/s. (default: unlimited)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>restic.advanced.stuck_request_timeout</id>
+        <label>stuck request timeout</label>
+        <type>text</type>
+        <help>Duration after which to retry stuck requests (default 5m0s)</help>
+        <advanced>true</advanced>
+    </field>
  </form>

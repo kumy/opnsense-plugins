@@ -38,7 +38,6 @@
         function genMapDataToFormUIPromise(data_get_map, server_params, callback) {
             return new Promise((resolve, reject) => {
                 mapDataToFormUI(data_get_map, server_params).done(function (data) {
-                    console.log('data', data);
                     if (callback != null) {
                         callback(data);
                     }
@@ -81,7 +80,6 @@
             if (!('frm_GeneralSettings' in data))
                 return;
             $.each(data.frm_GeneralSettings["restic"]["UpdateCron"], function(key, value) {
-                console.log('value', value);
                 if (key && value.selected === 1) {
                     $("#tab_schedule")
                         .attr("href","/ui/cron/item/open/"+key)
@@ -96,7 +94,9 @@
             {% for repository in repositories %}
             {{ 'genMapDataToFormUIPromise({' ~ repository["form_id"] ~ ': "/api/resticbackup/' ~ repository["form_name"] ~ '/get" }),' }}
             {% endfor %}
-        ])
+        ]).then(() => {
+            $('.selectpicker').selectpicker('refresh');
+        })
 
         // link save button to API set action
         $("#save").on('click', function() {
@@ -118,12 +118,15 @@
                 .then(api_promises => {
                     return Promise.all(api_promises);
                 })
-                .catch((err)=> console.log(err))
+                .then(() => {
+                    setTimeout(function () {
+                        // window.location.reload();
+                        alert('reload');
+                    }, 300);
+                })
+                .catch((err)=> console.error("Save form error:", err))
                 .finally(() => {
                     spinStop('save_progress');
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, 300);
                 });
         });
 

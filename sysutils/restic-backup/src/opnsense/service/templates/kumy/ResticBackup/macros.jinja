@@ -1,0 +1,35 @@
+
+{%- macro add_overrides(conf) %}
+{%- set options = [] %}
+{{ global_options(options, conf) }}
+{%- endmacro %}
+
+{%- macro add_checkbox(options, conf, path, option) %}
+    {%- if not helpers.empty(conf ~ '.' ~ path) and helpers.getNodeByTag(conf ~ '.' ~ path) != "global default" %}
+        {%- set tmp = options.append(option) %}
+    {%- endif %}
+{%- endmacro %}
+
+{%- macro add_option(options, conf, path, option) %}
+    {%- if not helpers.empty(conf ~ '.' ~ path) and helpers.getNodeByTag(conf ~ '.' ~ path) != "global default" %}
+        {%- set tmp = options.append(option ~ '="' ~ helpers.getNodeByTag(conf ~ '.' ~ path) ~ '"') %}
+    {%- endif %}
+{%- endmacro %}
+
+{% macro global_options(options, conf) -%}
+    {{- add_checkbox(options, conf, 'advanced.no_cache', '--no-cache') }}
+    {%- if helpers.empty(conf ~ '.advanced.no_cache') %}
+        {{- add_option(options, conf, 'advanced.cache_dir', '--cache-dir') }}
+    {%- endif %}
+    {{- add_checkbox(options, conf, 'advanced.cleanup_cache', '--cleanup-cache') }}
+    {{- add_checkbox(options, conf, 'advanced.insecure_tls', '--insecure-tls') }}
+    {{- add_option(options, conf, 'advanced.compression', '--compression') }}
+    {{- add_option(options, conf, 'advanced.http_user_agent', '--http-user-agent') }}
+    {{- add_option(options, conf, 'advanced.retry_lock', '--retry-lock') }}
+    {{- add_checkbox(options, conf, 'advanced.no_extra_verify', '--no-extra-verify') }}
+    {{- add_option(options, conf, 'advanced.limit_download', '--limit-download') }}
+    {{- add_option(options, conf, 'advanced.limit_upload', '--limit-upload') }}
+    {{- add_option(options, conf, 'advanced.stuck_request_timeout', '--stuck-request-timeout') }}
+
+RESTIC_GLOBAL_OPTIONS={{ options|join(' ') }}
+{%- endmacro %}

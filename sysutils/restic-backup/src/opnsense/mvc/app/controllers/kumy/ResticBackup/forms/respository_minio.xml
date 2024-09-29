@@ -22,4 +22,95 @@
         <type>password</type>
         <help>YOUR-MINIO-SECRET-ACCESS-KEY</help>
     </field>
+    <field>
+        <id>minio.advanced.header</id>
+        <label>Global options overrides</label>
+        <type>header</type>
+        <collapse>false</collapse>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>minio.repositorypassword</id>
+        <label>Repository password</label>
+        <type>password</type>
+        <help>Password used for backup encryption</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>minio.advanced.insecure_tls</id>
+        <label>insecure tls</label>
+        <type>dropdown</type>
+        <help>Skip TLS certificate verification when connecting to the repository (insecure)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>minio.advanced.no_cache</id>
+        <label>no cache</label>
+        <type>dropdown</type>
+        <help>Do not use a local cache</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>minio.advanced.cache_dir</id>
+        <label>cache dir</label>
+        <type>text</type>
+        <help>Set the cache directory. (default: use system default cache directory)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>minio.advanced.cleanup_cache</id>
+        <label>cleanup cache</label>
+        <type>dropdown</type>
+        <help>Auto remove old cache directories</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>minio.advanced.compression</id>
+        <label>compression</label>
+        <type>dropdown</type>
+        <help>Compression mode (default auto)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>minio.advanced.http_user_agent</id>
+        <label>http user agent</label>
+        <type>text</type>
+        <help>Set a http user agent for outgoing http requests</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>minio.advanced.retry_lock</id>
+        <label>retry lock</label>
+        <type>text</type>
+        <help>Retry to lock the repository if it is already locked, takes a value like 5m or 2h (default: no retries)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>minio.advanced.no_extra_verify</id>
+        <label>no extra verify</label>
+        <type>dropdown</type>
+        <help>Skip additional verification of data before upload</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>minio.advanced.limit_download</id>
+        <label>limit download</label>
+        <type>text</type>
+        <help>Limits download to a maximum rate in KiB/s. (default: unlimited)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>minio.advanced.limit_upload</id>
+        <label>limit upload</label>
+        <type>text</type>
+        <help>Limits uploads to a maximum rate in KiB/s. (default: unlimited)</help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>minio.advanced.stuck_request_timeout</id>
+        <label>stuck request timeout</label>
+        <type>text</type>
+        <help>Duration after which to retry stuck requests (default 5m0s)</help>
+        <advanced>true</advanced>
+    </field>
  </form>

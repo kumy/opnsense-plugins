@@ -24,5 +24,49 @@
                 </check001>
             </Constraints>
         </path>
+        <repositorypassword type=".\TextOrGlobalDefaultField">
+            <Required>Y</Required>
+        </repositorypassword>
+        <advanced>
+            <no_cache type="OptionField">
+                <default>global default</default>
+                <required>Y</required>
+                <OptionValues>
+                    <enabled value="1">on</enabled>
+                    <disabled value="0">off</disabled>
+                    <global_default value="global default">global default</global_default>
+                </OptionValues>
+            </no_cache>
+            <cache_dir type=".\TextOrGlobalDefaultField" />
+            <cleanup_cache type="OptionField">
+                <default>global default</default>
+                <required>Y</required>
+                <OptionValues>
+                    <enabled value="1">on</enabled>
+                    <disabled value="0">off</disabled>
+                    <global_default value="global default">global default</global_default>
+                </OptionValues>
+            </cleanup_cache>
+            <compression type="OptionField">
+                <default>global default</default>
+                <required>Y</required>
+                <OptionValues>
+                    <off>off</off>
+                    <max>max</max>
+                    <global_default value="global default">global default</global_default>
+                </OptionValues>
+            </compression>
+            <retry_lock type=".\TextOrGlobalDefaultField" />
+            <no_extra_verify type="OptionField">
+                <default>global default</default>
+                <required>Y</required>
+                <OptionValues>
+                    <enabled value="1">on</enabled>
+                    <disabled value="0">off</disabled>
+                    <global_default value="global default">global default</global_default>
+                </OptionValues>
+            </no_extra_verify>
+            <stuck_request_timeout type=".\TextOrGlobalDefaultField" />
+        </advanced>
     </items>
 </model>
