@@ -5,13 +5,13 @@
 {%- endmacro %}
 
 {%- macro add_checkbox(options, conf, path, option) %}
-    {%- if not helpers.empty(conf ~ '.' ~ path) and helpers.getNodeByTag(conf ~ '.' ~ path) != "global default" %}
+    {%- if helpers.exists(conf ~ '.' ~ path) and helpers.getNodeByTag(conf ~ '.' ~ path) != "global default" %}
         {%- set tmp = options.append(option) %}
     {%- endif %}
 {%- endmacro %}
 
 {%- macro add_option(options, conf, path, option) %}
-    {%- if not helpers.empty(conf ~ '.' ~ path) and helpers.getNodeByTag(conf ~ '.' ~ path) != "global default" %}
+    {%- if helpers.exists(conf ~ '.' ~ path) and helpers.getNodeByTag(conf ~ '.' ~ path) != "global default" %}
         {%- set tmp = options.append(option ~ '="' ~ helpers.getNodeByTag(conf ~ '.' ~ path) ~ '"') %}
     {%- endif %}
 {%- endmacro %}
