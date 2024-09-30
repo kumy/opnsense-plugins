@@ -1,27 +1,49 @@
 
+{%- set general_conf = 'system.backup.restic.general' %}
+
 {%- macro add_overrides(conf) %}
 {%- set options = [] %}
 {{ global_options(options, conf) }}
 {%- endmacro %}
 
 {%- macro add_checkbox(options, conf, path, option) %}
-    {%- if helpers.exists(conf ~ '.' ~ path) and helpers.getNodeByTag(conf ~ '.' ~ path) != "global default" %}
+    {%- if conf != general_conf and helpers.exists(conf ~ '.' ~ path) and helpers.getNodeByTag(conf ~ '.' ~ path) != "global default" %}
+        {%- if helpers.getNodeByTag(conf ~ '.' ~ path) == "1" %}
+            {%- set tmp = options.append(option) %}
+        {%- endif %}
+    {%- elif helpers.exists(general_conf ~ '.' ~ path) and not helpers.empty(general_conf ~ '.' ~ path) %}
         {%- set tmp = options.append(option) %}
     {%- endif %}
 {%- endmacro %}
 
 {%- macro add_option(options, conf, path, option) %}
-    {%- if helpers.exists(conf ~ '.' ~ path) and helpers.getNodeByTag(conf ~ '.' ~ path) != "global default" %}
-        {%- set tmp = options.append(option ~ '="' ~ helpers.getNodeByTag(conf ~ '.' ~ path) ~ '"') %}
+    {%- if conf != general_conf and helpers.getNodeByTag(conf ~ '.' ~ path) != "global default" %}
+        {%- if helpers.getNodeByTag(conf ~ '.' ~ path) == 'None' %}
+            {%- set tmp = options.append(option ~ '="' ~ helpers.getNodeByTag(conf ~ '.' ~ path) ~ '"') %}
+        {% else %}
+            {%- set tmp = options.append(option ~ '=""') %}
+        {% endif %}
+    {%- elif helpers.getNodeByTag(general_conf ~ '.' ~ path) is not none and not helpers.empty(general_conf ~ '.' ~ path) -%}
+        {%- set tmp = options.append(option ~ '="' ~ helpers.getNodeByTag(general_conf ~ '.' ~ path) ~ '"') %}
+    {%- endif %}
+{%- endmacro %}
+
+{%- macro is_option_enabled(conf, path) %}
+    {%- if conf != general_conf and helpers.exists(conf ~ '.' ~ path) and helpers.getNodeByTag(conf ~ '.' ~ path) != "global default" %}
+        {{- True }}
+    {%- elif helpers.exists(general_conf ~ '.' ~ path) and not helpers.empty(general_conf ~ '.' ~ path) %}
+        {{- True }}
     {%- endif %}
 {%- endmacro %}
 
 {% macro global_options(options, conf) -%}
     {{- add_checkbox(options, conf, 'advanced.no_cache', '--no-cache') }}
-    {%- if helpers.empty(conf ~ '.advanced.no_cache') %}
+
+    {%- if is_option_enabled(conf, 'advanced.no_cache') != "True" %}
         {{- add_option(options, conf, 'advanced.cache_dir', '--cache-dir') }}
+        {{- add_checkbox(options, conf, 'advanced.cleanup_cache', '--cleanup-cache') }}
     {%- endif %}
-    {{- add_checkbox(options, conf, 'advanced.cleanup_cache', '--cleanup-cache') }}
+
     {{- add_checkbox(options, conf, 'advanced.insecure_tls', '--insecure-tls') }}
     {{- add_option(options, conf, 'advanced.compression', '--compression') }}
     {{- add_option(options, conf, 'advanced.http_user_agent', '--http-user-agent') }}
